@@ -52,8 +52,16 @@ const updateTokenUser = (req, res) => {
         User.findOne({ _id: req.params.userId })
            .populate('photos')
             .then(user => {
-                const token = createJwt(user)
-                res.json({ token })
+                if (user.albums.length) {
+                    User.populate(user, 'albums')
+                    .then(userA => {
+                        const token = createJwt(userA)
+                        res.json({ token })
+                    })
+                } else {
+                    const token = createJwt(user)
+                    res.json({ token })
+                }
             })
             .catch(err => console.log('pop err  ' + err))
     } catch (err) {res.status(401).json(err)}

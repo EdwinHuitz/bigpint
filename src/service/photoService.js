@@ -36,6 +36,21 @@ export function removePhotoFromUser(photoId, userId) {
     .then(({ user }) => user) 
 }
 
+export function createGAlbum({ token, _id, photos }) {
+    return fetch(`apis/newShared/${token}/${_id}`,{
+        method: 'POST',
+    }, {mode: 'cors'})
+    .then(res => res.json())
+    .then(({ albumInfo }) => albumInfo)
+}
+
+export function addPhotosToAlbum(gToken, albumId, photoIds) {
+    console.log(`in the photoservice add photos, albumid ${albumId} and photos ${photoIds}`)
+    return fetch(`apis/addToAlbum/${gToken}/${albumId}/${photoIds}`, {
+        method: 'POST'
+    }, {mode: 'cors'})
+    .then(res => console.log(res))
+}
 
 // export async function getExif(imgUrl) {
 //     let exifData

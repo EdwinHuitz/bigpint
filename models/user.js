@@ -16,6 +16,7 @@ const userSchema = new Schema({
     token: String,
     gRefreshToken: String,
     profile: Object,
+    albums: [{type: Schema.Types.ObjectId, ref: 'Album'}]
 }, {timestamps: true})
 
 userSchema.set('toJSON', {

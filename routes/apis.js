@@ -8,5 +8,7 @@ router.get('/users/:userId/photos', userPhotosCtrlr.getUserPhotos)
 router.post('/users/:userId/photos', userPhotosCtrlr.addPhotoToUserDB)
 router.delete('/users/:userId/photos/:photoId', userPhotosCtrlr.deletePhoto)
 router.post('/updateUser', usersCtrlr.combineGTokenUser)
+router.post('/newShared/:gToken/:userId', userPhotosCtrlr.createGAlbum)
+router.post('/addToAlbum/:gToken/:albumId/:photoIds', userPhotosCtrlr.addToUserAlbum)
 
 module.exports = router
