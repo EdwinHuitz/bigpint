@@ -1,0 +1,27 @@
+form{
+   width:30vw;
+   height:30vh;
+   position: absolute;
+   top:25vh;
+   left:35vw;
+}
+input{
+   background-color:rgb(218, 218, 218) !important;
+}
+input[type=text]:hover{
+   background-color:white !important;
+}
+input[type=text]:focus{
+   background-color: white !important;
+   box-shadow: 0 0 8px silver !important;
+}
+@media only screen and (max-width:680px){
+   .form{
+      width:60vw;
+      height:60vh;
+      position: absolute;
+      top:20vh;
+      left:20vw;
+   }
+
+}
