@@ -34,18 +34,9 @@ let a= await axios({
         console.log('before the loop:'+strings)//original
         let ytLinks= await axios.get('https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q='+songS+'%20'+artistS+'&key='+yt)
         .then(response => {
-          console.log(response.data.items[0].id.videoId)
-          let ytA=Object.values(response)
+          let ytString=response.data.items[0].id.videoId;
           console.log('during the loop:'+strings)
-          let ytB=Object.values(ytA[0])
-          console.log(ytB)
-          let ytC=Object.values(ytB[5])
-          //console.log(ytC)
-          let ytD=Object.values(ytC[0])
-          //console.log(ytD)
-          let ytE=Object.values(ytD[2])
-          //console.log(ytE)
-          return(ytE[1])
+          return(ytString)
         })
         .catch(error => {console.log(error)})
         console.log('after the loop:'+strings)
