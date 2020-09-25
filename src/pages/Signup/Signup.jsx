@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import * as authService from '../../service/authService'
 import { Form, Button } from 'semantic-ui-react'
+import './Signup.css'
 
 const initialState = {
     name: '',
@@ -28,22 +29,18 @@ export default function Signup(props) {
     return (
         <Form onSubmit={handleSignup}>
             <Form.Field>
-                <label htmlFor="Name">name</label>
-                <input type="text" name="name" onChange={e => dispatch(e.target)} value={state.name} />
+                <input type="text" name="name" onChange={e => dispatch(e.target)} value={state.name} placeholder="Name" className={(props.design===1?'a':'e')} />
             </Form.Field>
             <Form.Field>
-                <label htmlFor="Email">email</label>
-                <input type="text" name="email" onChange={e => dispatch(e.target)} value={state.email}/>
+                <input type="text" name="email" onChange={e => dispatch(e.target)} value={state.email} placeholder="E-Mail" className={(props.design===1?'a':'e')} />
             </Form.Field>
             <Form.Field>
-                <label htmlFor="Password">password</label>
-                <input type="text" name="password" onChange={e => dispatch(e.target)} value={state.password} />
+                <input type="text" name="password" onChange={e => dispatch(e.target)} value={state.password} placeholder="Password" className={(props.design===1?'a':'e')} />
             </Form.Field>
             <Form.Field>
-                <label htmlFor="PasswordConf">confirm</label>
-                <input type="text" name="passwordConf" onChange={e => dispatch(e.target)} value={state.passowrdConf} />
+                <input type="text" name="passwordConf" onChange={e => dispatch(e.target)} value={state.passwordConf} placeholder="Confirm Password" className={(props.design===1?'a':'e')} />
             </Form.Field>
-          <Button type="submit">SIGN UP</Button>
+          <Button disabled={(state.email!==''&&state.password!==''&&state.passwordConf===state.password)?false:true} type="submit">SIGN UP</Button>
         </Form>
     )
 }

@@ -4,7 +4,7 @@ import NavBar from '../../Components/NavBar/NavBar';
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 import ProfilePage from '../ProfilePage/ProfilePage'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button } from 'semantic-ui-react'
 import AddPhotos from '../AddPhotos/AddPhotos'
 import './App.css';
 import * as authService from '../../service/authService'
@@ -14,7 +14,7 @@ import _ from 'lodash'
 
 export default function App(props) {
   const [user, setUser] = useState(authService.getUser())
-  
+  const [design,setD]=useState(1)
   function handleSignupLogin() {
     setUser(authService.getUser())
   }
@@ -22,10 +22,11 @@ export default function App(props) {
     authService.logout()
     setUser(null)
   }
-
   return (
     <>
+    
     <NavBar user={user} handleLogout={handleLogout} />
+    <Button className="modes" onClick={()=>{(design===1)?setD(2):setD(1)}} >Color Mode</Button><br/><span className={(design===1)?'a':'e'}></span>
       <Route exact path='/addPhotos'
         render={() => 
           <AddPhotos user={user} setUser={setUser} />
@@ -33,17 +34,17 @@ export default function App(props) {
       />
       <Route exact path="/shared"
         render={() => 
-        <Shared />
+        <Shared design={design} />
       } />
       <Route 
         exact path="/signup"
         render={() => 
-          <Signup history={props.history} handleSignupLogin={handleSignupLogin}/>
+          <Signup history={props.history} design={design} handleSignupLogin={handleSignupLogin}/>
         }/>
         <Route 
         exact path="/login"
         render={() => 
-          <Login history={props.history} handleSignupLogin={handleSignupLogin}/>
+          <Login history={props.history} design={design} handleSignupLogin={handleSignupLogin}/>
         }/>
         <Switch>
           {user &&
@@ -53,13 +54,9 @@ export default function App(props) {
         <Route 
         exact path="/profile"
         render={() => 
-          <ProfilePage
+          <ProfilePage design={design}
           user={user} />
         }/>
-        {/* <form action="/upload" method="POST" encType="multipart/form-data">
-        <input type="file" accept="image/*" name="photo" />
-        <input type="submit" value="upload" />
-        </form> */}
     </>
   );
 }

@@ -1,28 +1,23 @@
-html { box-sizing: border-box; }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-:root {
-  font-size: 62.5%;
-}
-#body {
-  padding-top: 3rem;
-  display: flex;
-  height: 100vh;
-  margin: 0;
-  background-color: #555555;
+
+body.body {
+  font-family: 'Cabin', sans-serif;
+  padding-top: 8rem;
+  margin: auto;
+  background-color: #264653;
   font-size: 2rem;
-  color: whitesmoke;
+  color: #e9c46a;
 }
 #nav {
   position: absolute;
+  font-family: 'Cabin', sans-serif;
   top: 0;
+  height: 7rem;
   width: 100%;
+  align-items: center;
   display: flex;
   justify-content: space-around;
-  height: 3rem;
   font-size: 2rem;
-  background-color: #cccccc;
+  color: #e9c46a;
+  background-color: #2a9d8f;
+  
 }

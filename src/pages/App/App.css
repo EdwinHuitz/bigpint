@@ -1,3 +1,72 @@
 * {
     font-size: 1.4rem;
 }
+::placeholder{color:darkslategrey !important;}
+button.modes{
+    position:absolute;
+    top:95vh;
+    left:0vw;
+}
+button.modes:hover{
+    background-color:lightgray !important;
+}
+form{
+    position:absolute;
+    width:30vw;
+    top:15vh;
+    height:30vh;
+    left:35vw;
+}
+form.e{
+   width:30vw;
+   height:30vh;
+   position: absolute;
+   top:15vh;
+   left:35vw;
+}
+label.e{color:white !important;}
+input.e{
+   background-color:rgb(218, 218, 218) !important;
+   
+}
+input[type=text].e:hover{
+    background-color:white !important;
+}
+input[type=text].e:focus{
+    background-color: white !important;
+    box-shadow: 0 0 8px whitesmoke !important;
+}
+span.a{
+    position:absolute;
+    z-index:-10;
+    display:none;
+    height:1px;
+    width:1px;
+}
+span.e{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:-10;
+    display:block;
+    height:100vh;
+    width:100vw;
+    background-color:black;
+}
+@media only screen and (max-width:680px){
+    form{
+        width:60vw;
+        height:60vh;
+        position: absolute;
+        top:20vh;
+        left:20vw;
+    }
+    form.e{
+        width:60vw;
+        height:60vh;
+        position: absolute;
+        top:20vh;
+        left:20vw;
+    }
+
+}
