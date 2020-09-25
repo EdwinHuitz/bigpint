@@ -6,7 +6,7 @@ import './AddPhotos.css'
 
 
 
-export default function AddPhotos({ user, setUser }) {
+export default function AddPhotos({ user, setUser, design }) {
     const [gPhotos, setGPhotos] = useState([])
     const [upPhotos, setUpPhotos] = useState(null)
     const [loaded, setLoaded] = useState(null)
@@ -64,30 +64,31 @@ export default function AddPhotos({ user, setUser }) {
         <div className="add-photos-pg">
             {user.photos && user.photos.length > 0 &&
             <> 
+                <button onClick={sendBatchPhotos}>Add to Profile</button>
                 <div className="user-photos">
                     {user.photos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => removeFromProfilePhotos(photo._id)}><img src={photo.urlTo} alt="" /></div>)}
                 </div>
-                {/* <img src={user.photos[0].url} alt=""/> */}
-                {/* <div onClick={sendBatchPhotos}>Send To Album</div> */}
                 </>
             }
-            {gPhotos.length ?
+            {gPhotos.length?
             <>
                 <div className="g-photos">
                     {gPhotos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => addToProfilePhotos(photo)}><img src={photo.baseUrl} alt="" /></div>)}
                 </div>
-                {/* <div onClick={sendCreateAlbum}>Add Shared Album</div> */}
+                <button onClick={sendCreateAlbum}>Select Your Albums</button>
                 </>
                 :
                 <>
-                    <a href="http://localhost:3001/auth/google">Sign in to google</a>
+                 <div>
+                    <a href="http://localhost:3001/auth/google"  className={(design===1?'':'e')}>Sign in to google</a>
                     <button onClick={setPhotosFromGoogle}>search gPhotos</button>
+                 </div>
                 </>
             }
-            <div>
-                <h3>Upload Photos</h3>
-                <input type="file" name="file" multiple onChange={handlePhotoChange} />
+            <div className={(design===1?'a':'e')}>
+                <input className={(design===1?'':'e')} type="file" name="upPhotos" multiple onChange={handlePhotoChange} />
                 <button onClick={handleUploadClick}>Upload</button>
+                <h3 className={(design===1?'':'e')}>Upload Photos</h3>
             </div>
         </div>
     )

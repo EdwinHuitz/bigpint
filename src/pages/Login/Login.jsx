@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import * as authService from '../../service/authService'
 import { Form, Button } from 'semantic-ui-react'
-import './Login.css'
 
 const initialState = {
     email: '',
@@ -23,18 +22,15 @@ export default function Login(props) {
             props.history.push('/addPhotos')
         } catch (err) {console.log(err)}
     }
-
     return (
         <Form onSubmit={handleLogin}>
             <Form.Field>
-                <label htmlFor="Email">email</label>
-                <input type="text" name="email" onChange={e => dispatch(e.target)} value={state.email}/>
+                <input type="text" name="email" onChange={e => dispatch(e.target)} value={state.email} placeholder="E-Mail" className={(props.design===1?'a':'e')} />
             </Form.Field>
             <Form.Field>
-                <label htmlFor="Password">password</label>
-                <input type="text" name="password" onChange={e => dispatch(e.target)} value={state.password} />
+                <input type="text" name="password" onChange={e => dispatch(e.target)} value={state.password} placeholder="Password" className={(props.design===1?'a':'e')} />
             </Form.Field>
-          <Button type="submit">LOGIN</Button>
+          <Button disabled={(state.email!==''&&state.password!=='')?false:true} type="submit">LOGIN</Button>
         </Form>
     )
 }

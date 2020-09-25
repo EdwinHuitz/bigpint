@@ -8,15 +8,17 @@
     flex-flow: row wrap;
     border: solid darkgreen 0.5rem;
     border-radius: 1rem;
+    margin:1%;
 }
 .g-photos {
     display: flex;
     flex-flow: row wrap;
     border: solid darkred 0.5rem;
     border-radius: 1rem;
+    margin-bottom:1%;
 }
 .img-wrapper {
-    width: 20vh;
+    width: 12vw;
     flex-grow: 1;
 }
 
