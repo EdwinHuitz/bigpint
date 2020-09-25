@@ -13,7 +13,6 @@ const session = require('express-session');
 const sessionFileStore = require('session-file-store');
 const fileStore = sessionFileStore(session);
 require('dotenv').config()
-require('./config/database')
 const gConfig = require('./config/google')
 const indexRouter = require('./routes/index')
 const onesRouter = require('./routes/typeones')

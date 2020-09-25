@@ -8,19 +8,26 @@ var storage = multer.diskStorage({
         cb(null, Date.now() + '-' + file.originalname)
     }
 })
-var upload = multer({ storage }).array('upPhoto')
+var upload = multer({ storage }).array('file')
 
-const uploadPhotos = (req, res) => {
+const uploadPhotos = (req, res, next) => {
     upload(req, res, (err) => {
         if (err instanceof multer.MulterError) {
+            console.log(err)
             return res.status(500).json(err)
         } else if (err) {
+            console.log(err)
             return res.status(500).json(err)
         }
-        return res.status(200).send(req.upPhoto)
+        next()
     })
 }
 
-module.exports = {
-    uploadPhotos
-}
+// const getResults = (req, res) => {
+//     const urlsTo = req.files.map(file => file.path)
+//     req.urlsTo = urlsTo
+//     userPhotosCtrlr.addUserPhoto(urlsTo, req.params.userId)
+//     res.status(200).send('ok')
+// }
+
+module.exports = { uploadPhotos }

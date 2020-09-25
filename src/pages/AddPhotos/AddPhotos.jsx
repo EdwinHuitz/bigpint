@@ -52,10 +52,12 @@ export default function AddPhotos({ user, setUser, design }) {
         // setLoaded(0)
     }
 
-    function handleUploadClick() {
+    async function handleUploadClick() {
         const data = new FormData()
-        for (var x = 0; x < upPhotos.length; x++) data.append('upPhoto', upPhotos[x])
-        uploadService.uploadPhotos(data)
+        for (var x = 0; x < upPhotos.length; x++) data.append('file', upPhotos[x])
+        await uploadService.uploadPhotos(data, user._id)
+        const updatedUser = await authService.getUser(user._id)
+        setUser(updatedUser)
     }
         // id productUrl baseUrl mimeType mediaMetadata filename
     return (
@@ -64,7 +66,7 @@ export default function AddPhotos({ user, setUser, design }) {
             <> 
                 <button onClick={sendBatchPhotos}>Add to Profile</button>
                 <div className="user-photos">
-                    {user.photos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => removeFromProfilePhotos(photo._id)}><img src={photo.baseUrl} alt="" /></div>)}
+                    {user.photos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => removeFromProfilePhotos(photo._id)}><img src={photo.urlTo} alt="" /></div>)}
                 </div>
                 </>
             }
