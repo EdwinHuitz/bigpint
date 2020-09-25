@@ -2,14 +2,32 @@
     font-size: 1.4rem;
 }
 ::placeholder{color:darkslategrey !important;}
-button.modes{
+a.e{text-decoration:underline;color:white;}
+a.e:hover{text-decoration: underline;color:lightblue;}
+button.light{
     position:absolute;
     top:95vh;
     left:0vw;
+    background-color:slategrey !important;
+    color:white !important;
 }
-button.modes:hover{
-    background-color:lightgray !important;
+button.light:hover{
+    background-color:lightgrey !important;
+    color:steelblue !important;
 }
+button.dark{
+    position:absolute;
+    top:95vh;
+    left:0vw;
+    background-color: rgb(60, 60, 60) !important;
+    color:white !important;
+}
+button.dark:hover{
+    background-color:lightgrey !important;
+    color:black !important;
+}
+div.a{padding:2%;margin-top:5vh;}
+div.e{padding:2%;margin-top:5vh;}
 form{
     position:absolute;
     width:30vw;
@@ -24,10 +42,10 @@ form.e{
    top:15vh;
    left:35vw;
 }
-label.e{color:white !important;}
-input.e{
-   background-color:rgb(218, 218, 218) !important;
-   
+h3.e{color:white;}
+input[type=text].e{
+    background-color:rgb(218, 218, 218) !important;
+    
 }
 input[type=text].e:hover{
     background-color:white !important;
@@ -36,6 +54,24 @@ input[type=text].e:focus{
     background-color: white !important;
     box-shadow: 0 0 8px whitesmoke !important;
 }
+input[type=file].e{
+    color:white;
+}
+label.e{color:white !important;}
+nav.e {
+    position: absolute;
+    font-family: 'Cabin', sans-serif;
+    top: 0;
+    height: 7rem;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    font-size: 2rem;
+    color: white;
+    background-color: rgb(60,60,60);
+    
+  }
 span.a{
     position:absolute;
     z-index:-10;

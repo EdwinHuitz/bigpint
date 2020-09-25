@@ -7,7 +7,7 @@ body.body {
   font-size: 2rem;
   color: #e9c46a;
 }
-#nav {
+nav.nav {
   position: absolute;
   font-family: 'Cabin', sans-serif;
   top: 0;

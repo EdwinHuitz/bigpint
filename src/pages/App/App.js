@@ -25,11 +25,11 @@ export default function App(props) {
   return (
     <>
     
-    <NavBar user={user} handleLogout={handleLogout} />
-    <Button className="modes" onClick={()=>{(design===1)?setD(2):setD(1)}} >Color Mode</Button><br/><span className={(design===1)?'a':'e'}></span>
+    <NavBar user={user} design={design} handleLogout={handleLogout} />
+    <Button className={(design===1)?'light':'dark'} onClick={()=>{(design===1)?setD(2):setD(1)}} >{(design===1)?'Dark Mode':'Light Mode'}</Button><br/><span className={(design===1)?'a':'e'}></span>
       <Route exact path='/addPhotos'
         render={() => 
-          <AddPhotos user={user} setUser={setUser} />
+          <AddPhotos user={user} setUser={setUser} design={design}/>
         } 
       />
       <Route exact path="/shared"
