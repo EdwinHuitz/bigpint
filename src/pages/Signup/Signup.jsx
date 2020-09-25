@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import * as authService from '../../service/authService'
 import { Form, Button } from 'semantic-ui-react'
-import './Signup.css'
 
 const initialState = {
     name: '',
