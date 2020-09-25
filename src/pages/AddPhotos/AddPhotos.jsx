@@ -52,10 +52,12 @@ export default function AddPhotos({ user, setUser }) {
         // setLoaded(0)
     }
 
-    function handleUploadClick() {
+    async function handleUploadClick() {
         const data = new FormData()
-        for (var x = 0; x < upPhotos.length; x++) data.append('upPhoto', upPhotos[x])
-        uploadService.uploadPhotos(data)
+        for (var x = 0; x < upPhotos.length; x++) data.append('file', upPhotos[x])
+        await uploadService.uploadPhotos(data, user._id)
+        const updatedUser = await authService.getUser(user._id)
+        setUser(updatedUser)
     }
         // id productUrl baseUrl mimeType mediaMetadata filename
     return (
@@ -63,9 +65,10 @@ export default function AddPhotos({ user, setUser }) {
             {user.photos && user.photos.length > 0 &&
             <> 
                 <div className="user-photos">
-                    {user.photos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => removeFromProfilePhotos(photo._id)}><img src={photo.baseUrl} alt="" /></div>)}
+                    {user.photos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => removeFromProfilePhotos(photo._id)}><img src={photo.urlTo} alt="" /></div>)}
                 </div>
-                <div onClick={sendBatchPhotos}>Send To Album</div>
+                {/* <img src={user.photos[0].url} alt=""/> */}
+                {/* <div onClick={sendBatchPhotos}>Send To Album</div> */}
                 </>
             }
             {gPhotos.length ?
@@ -73,7 +76,7 @@ export default function AddPhotos({ user, setUser }) {
                 <div className="g-photos">
                     {gPhotos.map((photo, i) => <div className="img-wrapper" key={i} onClick={() => addToProfilePhotos(photo)}><img src={photo.baseUrl} alt="" /></div>)}
                 </div>
-                <div onClick={sendCreateAlbum}>Add Shared Album</div>
+                {/* <div onClick={sendCreateAlbum}>Add Shared Album</div> */}
                 </>
                 :
                 <>
@@ -83,7 +86,7 @@ export default function AddPhotos({ user, setUser }) {
             }
             <div>
                 <h3>Upload Photos</h3>
-                <input type="file" name="upPhotos" multiple onChange={handlePhotoChange} />
+                <input type="file" name="file" multiple onChange={handlePhotoChange} />
                 <button onClick={handleUploadClick}>Upload</button>
             </div>
         </div>

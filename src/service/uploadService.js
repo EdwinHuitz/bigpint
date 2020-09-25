@@ -1,8 +1,7 @@
 import axios from 'axios'
 
-export function uploadPhotos(data) {
-    axios.post('http://localhost:3001/upload/uploadPhotos', data, {
-
-        })
-        .then(response => console.log(response.statusText))
+export function uploadPhotos(data, userId) {
+    axios.post(`http://localhost:3001/upload/uploadPhotos/${userId}`, data)
+        .then(res => res.data)
+        .then(({ user }) => user)
 }
