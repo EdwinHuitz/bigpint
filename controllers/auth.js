@@ -1,11 +1,13 @@
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const fs =require('fs')
 
 const getUser = (req, res) => {
 
 }
 
 const signup = (req, res) => {
+    //let dir="../public/images/";
     try {
         User.create(req.body, (err, user) => {
             user.populate('photos', (err, user) => {
@@ -13,6 +15,7 @@ const signup = (req, res) => {
                 res.json({ token })
             })
         })
+        //fs.mkdir()
     } catch (err) {res.status(400).send({ 'err': err.errmsg })}
 }
 
